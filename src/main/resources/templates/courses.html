@@ -1,0 +1,39 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>Course Manager</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+
+  <body>
+  <div align="center"> 
+	  <h1>Course Manager</h1>
+	  <ul>
+	  	<li> <a href="/"> go home</a> </li>
+	  	<li> <a href="/courses"> View courses</a> </li>
+	  	<li> <a href="/form"> Add new course</a> </li>
+	  </ul>
+	  
+	  <table border="1" cellpadding="10" >
+	  	<tr> 
+	  		<th>Course Name</th>
+	  		<th>ID</th>
+	  		<th>Description</th>
+	  		<th>Edit</th>
+	  	</tr>
+	  	<tr th:each="course: ${coursesList}">
+	  		<td th:text="${course.name}"></td>
+	  		<td th:text="${course.id}"></td>
+	  		<td th:text="${course.description}"></td>
+	  		<td> <a th:href="@{ '/courses/' + ${course.id} + '/edit'}">Edit</a>
+	  			 <a th:href="@{ '/courses/' + ${course.id} + '/delete'}">Delete</a> 
+	  		</td>
+	  	</tr>
+	  </table>
+  </div>
+  </body>
+
+</html>
